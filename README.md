@@ -1,6 +1,6 @@
-# vue-template
+# sleeping-dogs-hacking-game
 
-Built from the vue-cli. Modified to include bootstrap-vue.
+Training for hacking in the Sleeping Dogs game.
 
 ## System Requirements
 
