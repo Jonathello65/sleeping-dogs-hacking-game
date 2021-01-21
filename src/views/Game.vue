@@ -1,7 +1,7 @@
 <template>
-    <div id="game">
-        <Intro/>
-    </div>
+<div id="game">
+    <Intro/>
+</div>
 </template>
 
 <script lang="ts">
