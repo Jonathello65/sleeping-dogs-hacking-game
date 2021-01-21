@@ -24,7 +24,7 @@ nvm use 10.16
 cd ./vue-template
 ```
 
-Proceed to **Project Setup**.
+Proceed to [**Project Setup**](#project-setup).
 
 ### Installing on Android
 
@@ -43,7 +43,7 @@ nano ~/.node-gyp/YOUR_INSTALLED_VERSION/include/node/common.gypi
 
 Search for the first occurrence of `"android"`, and replace `'-fPIE'` with `'-fPIC'` for both `'cflags'` and `'ldflags'`. Remove the `-pie` flag from `'ldflags'` as well. Search for the second occurrence of `"android"` and repeat the steps above. Save the file, and be sure to `cd` back into the vue-template directory if necessary.
 
-You may now proceed to **Project Setup**.
+You may now proceed to [**Project Setup**](#project-setup).
 
 ## Project Setup
 
