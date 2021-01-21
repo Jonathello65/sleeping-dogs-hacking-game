@@ -9,8 +9,16 @@
 </template>
 
 <style lang="scss">
+// 'Magistral C Regular'
+@font-face {
+    font-family: "Magistral C";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("Magistral C Regular"), local("MagistralC-Regular"), url(./assets/font/MagistralCRegular.woff2) format("woff2");
+}
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    font-family: "Magistral C", "Avenir LT Std", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
