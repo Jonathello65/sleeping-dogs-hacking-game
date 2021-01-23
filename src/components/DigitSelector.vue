@@ -12,11 +12,12 @@ import {Component, Prop, Vue} from "vue-property-decorator";
 @Component
 export default class DigitSelector extends Vue {
     private static autoIncrementID: number = 0;
-    private ID!: number;
-    private value: number = 0;
+    public value: number = 0;
+    public id!: number;
 
     public DigitSelector() {
-        this.ID = DigitSelector.autoIncrementID++;
+        this.id = DigitSelector.autoIncrementID++;
+        console.log("oasdpfks");
     }
 
     private increment(): void {
