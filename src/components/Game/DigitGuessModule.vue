@@ -15,10 +15,10 @@ import DigitGuess from "@/components/DigitGuess.vue";
 })
 export default class DigitGuessModule extends Vue {
     private static autoIncrementID: number = 0;
-    private ID!: number;
+    public id!: number;
 
-    public DigitGuessModule() {
-        this.ID = DigitGuessModule.autoIncrementID++;
+    public created() {
+        this.id = DigitGuessModule.autoIncrementID++;
     }
 }
 </script>

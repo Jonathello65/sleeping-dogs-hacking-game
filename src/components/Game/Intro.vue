@@ -8,7 +8,7 @@
 import {Component, Vue} from "vue-property-decorator";
 
 @Component
-export default class IntroGame extends Vue {
+export default class Intro extends Vue {
 
 }
 </script>

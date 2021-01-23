@@ -1,18 +1,18 @@
 <template>
 <div id="game">
-    <IntroGame/>
+    <Intro/>
     <HackGame/>
 </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import IntroGame from "@/components/IntroGame.vue";
-import HackGame from "@/components/HackGame.vue";
+import Intro from "@/components/Game/Intro.vue";
+import HackGame from "@/components/Game/HackGame.vue";
 
 @Component({
     components: {
-        IntroGame,
+        Intro,
         HackGame
     }
 })

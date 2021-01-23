@@ -10,13 +10,13 @@ import {Component, Prop, Vue} from "vue-property-decorator";
 @Component
 export default class DigitGuess extends Vue {
     private static autoIncrementID: number = 0;
-    private ID!: number;
-    private value: number = 0;
-    private matchesDigit: boolean = false;
-    private matchesPosition: boolean = false;
+    public id!: number;
+    public value: number = 0;
+    public matchesDigit: boolean = false;
+    public matchesPosition: boolean = false;
 
-    public DigitGuess() {
-        this.ID = DigitGuess.autoIncrementID++;
+    public created() {
+        this.id = DigitGuess.autoIncrementID++;
     }
 }
 </script>
