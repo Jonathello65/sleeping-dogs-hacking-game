@@ -1,24 +1,36 @@
 <template>
-<div class="digit-guess-module">
-    
-</div>
+    <div class="digit-guess-module">
+        <b-container>
+            <b-row>
+                <b-col v-for="digit in digits" :key="digit.id">
+                    <DigitGuessState :props="digit"/>
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from "vue-property-decorator";
-import DigitGuess from "@/components/DigitGuess.vue";
+import {Component, Vue, Prop} from "vue-property-decorator";
+import {Guess, GuessDigit} from "@/classes/Guess.ts";
+import DigitGuessState from "@/components/Game/DigitGuessState.vue";
 
 @Component({
     components: {
-        DigitGuess
+        DigitGuessState
     }
 })
 export default class DigitGuessModule extends Vue {
-    private static autoIncrementID: number = 0;
-    public id!: number;
+    @Prop() public props!: Guess;
+    private digits: GuessDigit[] = [];
 
     public created() {
-        this.id = DigitGuessModule.autoIncrementID++;
+        this.sync();
+    }
+
+    private sync(): void {
+
+        this.digits = this.props.digits;
     }
 }
 </script>
