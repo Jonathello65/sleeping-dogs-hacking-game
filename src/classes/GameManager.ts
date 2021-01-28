@@ -1,7 +1,8 @@
 export default class GameManager {
-    public static digitArray: number[] = [];
+    public static digitArray: number[];
 
     public static generateCode(digitCount: number): void {
+        this.digitArray = [];
         const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         for (let i = 0; i < digitCount; i++) {
             this.digitArray.push(numbers.splice(this.getRandomInt(0, numbers.length), 1)[0]);
