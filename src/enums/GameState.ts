@@ -1,4 +1,4 @@
-const enum GameState {
+enum GameState {
     Playing, Success, Failure
 }
 

@@ -67,7 +67,6 @@ export default class HackGame extends Vue {
                 this.$store.commit("setGameState", GameState.Failure);
             }
         }
-        console.log(this.$store.getters.isPlaying);
     }
 }
 </script>
