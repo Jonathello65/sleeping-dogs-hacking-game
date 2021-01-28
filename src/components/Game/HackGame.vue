@@ -34,6 +34,7 @@ import Config from "@/classes/Config.ts";
 import GameManager from "@/classes/GameManager.ts";
 import DigitSelector from "@/components/Game/DigitSelector.vue";
 import DigitGuessModule from "@/components/Game/DigitGuessModule.vue";
+import GameState from "@/enums/GameState";
 
 @Component({
     components: {
@@ -59,13 +60,14 @@ export default class HackGame extends Vue {
         this.guesses.push(guess);
 
         if (guess.guessIsCorrect) {
-            GameManager.codeSuccess = true;
+            this.$store.commit("setGameState", GameState.Success);
         } else {
             this.remainingAttempts--;
             if (this.remainingAttempts === 0) {
-                GameManager.codeFailure = true;
+                this.$store.commit("setGameState", GameState.Failure);
             }
         }
+        console.log(this.$store.getters.isPlaying);
     }
 }
 </script>

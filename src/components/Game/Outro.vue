@@ -1,7 +1,7 @@
 <template>
 <div class="outro-game">
-    <h1 v-if="GameManager.codeSuccess">ACCESS GRANTED</h1>
-    <h1 v-if="GameManager.codeFailure">ACCESS DENIED</h1>
+    <h1 v-if="$store.getters.isSuccess">ACCESS GRANTED</h1>
+    <h1 v-if="$store.getters.isFailure">ACCESS DENIED</h1>
 </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
     <div id="game">
         <Intro/>
-        <HackGame v-if="!GameManager.codeSuccess && !GameManager.codeFailure"/>
-        <Outro v-if="GameManager.codeSuccess || GameManager.codeFailure"/>
+        <HackGame v-if="$store.getters.isPlaying"/>
+        <Outro v-if="!$store.getters.isPlaying"/>
     </div>
 </template>
 
