@@ -11,7 +11,6 @@ import { Component, Vue } from "vue-property-decorator";
 import Intro from "@/components/Game/Intro.vue";
 import HackGame from "@/components/Game/HackGame.vue";
 import Outro from "@/components/Game/Outro.vue";
-import GameManager from "@/classes/GameManager.ts";
 
 @Component({
     components: {
@@ -20,7 +19,5 @@ import GameManager from "@/classes/GameManager.ts";
         Outro
     }
 })
-export default class Game extends Vue {
-    public GameManager = GameManager;
-}
+export default class Game extends Vue {}
 </script>
