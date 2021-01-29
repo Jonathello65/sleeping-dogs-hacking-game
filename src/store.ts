@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 class State {
     public gamestate: GameState = GameState.Playing;
+    public correctCode: string = "";
 }
 
 const getters: GetterTree<State, any> = {
@@ -18,12 +19,18 @@ const getters: GetterTree<State, any> = {
     },
     isFailure: (state) => {
         return state.gamestate === GameState.Failure;
+    },
+    getCorrectCode: (state) => {
+        return state.correctCode;
     }
 };
 
 const mutations: MutationTree<State> = {
     setGameState(state, payload) {
         state.gamestate = payload;
+    },
+    setCorrectCode(state, payload) {
+        state.correctCode = payload;
     }
 };
 

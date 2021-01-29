@@ -49,6 +49,7 @@ export default class HackGame extends Vue {
 
     public mounted(): void {
         GameManager.generateCode(Config.DIGIT_COUNT);
+        this.$store.commit("setCorrectCode", GameManager.digitArray.join(""));
 
         for (let i = 0; i < Config.DIGIT_COUNT; i++) {
             this.player.digits.push({id: i, value: 0} as PlayerDigit);

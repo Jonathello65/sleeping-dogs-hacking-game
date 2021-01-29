@@ -1,5 +1,6 @@
 <template>
 <div class="outro-game">
+    <h1>{{ $store.getters.getCorrectCode }} </h1>
     <h1 v-if="$store.getters.isSuccess">ACCESS GRANTED</h1>
     <h1 v-if="$store.getters.isFailure">ACCESS DENIED</h1>
 </div>
