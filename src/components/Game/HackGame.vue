@@ -63,11 +63,21 @@ export default class HackGame extends Vue {
 
         if (guess.guessIsCorrect) {
             this.$store.commit("setGameState", GameState.Success);
+            this.playSound("sfx/HACKSUCC.wav");
         } else {
             this.remainingAttempts--;
+            this.playSound("sfx/MSELECT1.WAV");
             if (this.remainingAttempts === 0) {
                 this.$store.commit("setGameState", GameState.Failure);
+                this.playSound("sfx/MDONE.WAV");
             }
+        }
+    }
+
+    public playSound(sound: string): void {
+        if (sound) {
+            const audio = new Audio(sound);
+            audio.play();
         }
     }
 }

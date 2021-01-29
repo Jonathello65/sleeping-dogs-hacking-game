@@ -1,8 +1,8 @@
 <template>
 <div class="digit-selector">
-    <button @click="increment()">^</button>
+    <button @click="increment()" @click.prevent="playSound('sfx/MROLLOV2.WAV')">^</button>
     <h3>{{ value }}</h3>
-    <button @click="decrement()">v</button>
+    <button @click="decrement()" @click.prevent="playSound('sfx/MROLLOV2.WAV')">v</button>
 </div>
 </template>
 
@@ -33,6 +33,13 @@ export default class DigitSelector extends Vue {
             this.value = 9;
         } else {
             this.value--;
+        }
+    }
+
+    public playSound(sound: string): void {
+        if (sound) {
+            const audio = new Audio(sound);
+            audio.play();
         }
     }
 
