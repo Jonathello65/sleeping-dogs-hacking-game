@@ -1,16 +1,17 @@
 <template>
 <div id="app">
-    <NavBar/>
+    <nav-bar/>
     <div class="h-100 container-fluid d-flex flex-column">
         <div class="row flex-grow-0">
             <div class="col-12 col-sm-8 col-lg-6 offset-sm-2 offset-lg-3">
                 <router-view/>
             </div>
         </div>
-        <Footer/>
+        <footer/>
     </div>
 </div>
 </template>
+
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
@@ -25,10 +26,10 @@ import Footer from "@/components/Footer.vue";
 export default class App extends Vue {}
 </script>
 
+
 <style lang="scss">
 @import "@/styles/DefaultTheme.scss";
 $nav-offset: 4.5rem;
-
 // 'Magistral C Regular'
 @font-face {
     font-family: "Magistral C";

@@ -13,6 +13,7 @@
 </b-navbar>
 </template>
 
+
 <style scoped lang="scss">
 @import "@/styles/DefaultTheme.scss";
 

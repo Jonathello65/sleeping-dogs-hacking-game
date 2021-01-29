@@ -1,30 +1,31 @@
 <template>
-    <div class="hack-game">
-        <b-container>
-            <b-row>
-                <b-col>
-                    <h4>PREVIOUS ATTEMPTS:</h4>
-                </b-col>
-            </b-row>
-            <b-row v-for="guess in guesses" :key="guess.id">
-                <b-col>
-                    <DigitGuessModule :props="guess"/>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col>
-                    <h4>ATTEMPTS REMAINING: {{remainingAttempts}}</h4>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col v-for="digit in player.digits" :key="digit.id">
-                    <DigitSelector :props="digit" @changed="player.update(digit, ...arguments)"/>
-                </b-col>
-                <button @click="guessPassword()">-></button>
-            </b-row>
-        </b-container>
-    </div>
+<div class="hack-game">
+    <b-container>
+        <b-row>
+            <b-col>
+                <h4>PREVIOUS ATTEMPTS:</h4>
+            </b-col>
+        </b-row>
+        <b-row v-for="guess in guesses" :key="guess.id">
+            <b-col>
+                <digit-guess-module :props="guess"/>
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+                <h4>ATTEMPTS REMAINING: {{remainingAttempts}}</h4>
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col v-for="digit in player.digits" :key="digit.id">
+                <digit-selector :props="digit" @changed="player.update(digit, ...arguments)"/>
+            </b-col>
+            <button @click="guessPassword()">-></button>
+        </b-row>
+    </b-container>
+</div>
 </template>
+
 
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator";
@@ -70,6 +71,7 @@ export default class HackGame extends Vue {
     }
 }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">

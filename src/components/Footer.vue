@@ -11,6 +11,7 @@
 </footer>
 </template>
 
+
 <style scoped lang="scss">
 $footer-offset: 1.5rem;
 footer {

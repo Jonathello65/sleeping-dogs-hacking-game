@@ -1,8 +1,9 @@
 <template>
-    <div class="digit-guess-state">
-        <h3 :class="{ 'incorrect-digit': !isCorrectDigit, 'incorrect-position': !isCorrectPosition}">{{ value }}</h3>
-    </div>
+<div class="digit-guess-state">
+    <h3 :class="{ 'incorrect-digit': !isCorrectDigit, 'incorrect-position': !isCorrectPosition}">{{ value }}</h3>
+</div>
 </template>
+
 
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator";
@@ -27,25 +28,26 @@ export default class DigitGuessState extends Vue {
 }
 </script>
 
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    h3 {
-        color: green;
-    }
+h3 {
+    color: green;
+}
 
-    .incorrect-position {
-        color: black;
-        background-color: orange;
-        border-radius: 50%;
-        width: 33.6px;
-        margin: 0 auto;
-    }
+.incorrect-position {
+    color: black;
+    background-color: orange;
+    border-radius: 50%;
+    width: 33.6px;
+    margin: 0 auto;
+}
 
-    .incorrect-digit {
-        color: black;
-        background-color: red;
-        border-radius: 50%;
-        width: 33.6px;
-        margin: 0 auto;
-    }
+.incorrect-digit {
+    color: black;
+    background-color: red;
+    border-radius: 50%;
+    width: 33.6px;
+    margin: 0 auto;
+}
 </style>

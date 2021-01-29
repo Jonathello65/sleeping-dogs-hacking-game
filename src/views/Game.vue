@@ -1,11 +1,12 @@
 <template>
 <div id="game">
-    <Background/>
-    <Intro/>
-    <HackGame v-if="$store.getters.isPlaying"/>
-    <Outro v-if="!$store.getters.isPlaying"/>
+    <background/>
+    <intro/>
+    <hack-game v-if="$store.getters.isPlaying"/>
+    <outro v-if="!$store.getters.isPlaying"/>
 </div>
 </template>
+
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
@@ -19,5 +20,7 @@ import Outro from "@/components/Game/Outro.vue";
         Background, Intro, HackGame, Outro
     }
 })
-export default class Game extends Vue {}
+export default class Game extends Vue {
+
+}
 </script>

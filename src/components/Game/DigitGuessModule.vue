@@ -1,14 +1,15 @@
 <template>
-    <div class="digit-guess-module">
-        <b-container>
-            <b-row>
-                <b-col v-for="digit in digits" :key="digit.id">
-                    <DigitGuessState :props="digit"/>
-                </b-col>
-            </b-row>
-        </b-container>
-    </div>
+<div class="digit-guess-module">
+    <b-container>
+        <b-row>
+            <b-col v-for="digit in digits" :key="digit.id">
+                <digit-guess-state :props="digit"/>
+            </b-col>
+        </b-row>
+    </b-container>
+</div>
 </template>
+
 
 <script lang="ts">
 import {Component, Vue, Prop} from "vue-property-decorator";
@@ -34,6 +35,7 @@ export default class DigitGuessModule extends Vue {
     }
 }
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
