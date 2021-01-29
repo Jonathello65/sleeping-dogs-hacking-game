@@ -1,8 +1,8 @@
 <template>
 <div class="digit-selector">
-    <button @click="increment()" @click.prevent="playSound('sfx/MROLLOV2.WAV')">^</button>
+    <button @click="increment()">^</button>
     <h3>{{ value }}</h3>
-    <button @click="decrement()" @click.prevent="playSound('sfx/MROLLOV2.WAV')">v</button>
+    <button @click="decrement()">v</button>
 </div>
 </template>
 
@@ -10,6 +10,7 @@
 <script lang="ts">
 import {Component, Prop, Watch, Vue} from "vue-property-decorator";
 import {PlayerDigit} from "@/classes/Player.ts";
+import GameManager from "@/classes/GameManager.ts";
 
 @Component
 export default class DigitSelector extends Vue {
@@ -26,6 +27,7 @@ export default class DigitSelector extends Vue {
         } else {
             this.value++;
         }
+        this.playSound();
     }
 
     public decrement(): void {
@@ -34,13 +36,11 @@ export default class DigitSelector extends Vue {
         } else {
             this.value--;
         }
+        this.playSound();
     }
 
-    public playSound(sound: string): void {
-        if (sound) {
-            const audio = new Audio(sound);
-            audio.play();
-        }
+    private playSound(): void {
+        GameManager.playSound("MROLLOV2");
     }
 
     @Watch("props.value")

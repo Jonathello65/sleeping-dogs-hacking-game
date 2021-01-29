@@ -15,4 +15,11 @@ export default class GameManager {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min) + min); // Max is exclusive, min is inclusive
     }
+
+    public static playSound(sound: string): void {
+        if (sound) {
+            const audio = new Audio(`sfx/${sound}.WAV`);
+            audio.play();
+        }
+    }
 }
