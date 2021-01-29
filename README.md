@@ -1,6 +1,6 @@
 # sleeping-dogs-hacking-game
 
-Training for hacking in the Sleeping Dogs game.
+Training for hacking in the Sleeping Dogs game. Utilizes Vue to recreate the mini game as close as possible, with some QOL changes for PC/mobile. See the dev process on our Trello board: https://trello.com/b/ZLsxVEvF/sleepingdogs-hacking-minigame
 
 ## System Requirements
 
