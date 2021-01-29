@@ -47,10 +47,7 @@ export default class HackGame extends Vue {
     public guesses: Guess[] = [];
     public remainingAttempts: number = 6;
 
-    public mounted(): void {
-        GameManager.generateCode(Config.DIGIT_COUNT);
-        this.$store.commit("setCorrectCode", GameManager.digitArray.join(""));
-
+    public created(): void {
         for (let i = 0; i < Config.DIGIT_COUNT; i++) {
             this.player.digits.push({id: i, value: 0} as PlayerDigit);
         }
