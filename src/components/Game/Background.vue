@@ -10,29 +10,30 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "@/styles/Body.scss";
+$image-folder: "../../assets/image";
 $badge-inner-initial-scale: 0.125;
 
+.background {
+    > div {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+}
 .bg-color {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
     width: 480px;
     height: 825px;
-    margin: 0 auto;
-    background-image: url(../../assets/image/Background.webp);
+    background-image: url("#{$image-folder}/Background.webp");
     background-size: contain;
     background-repeat: no-repeat;
 }
 .badge {
-    position: absolute;
-    left: 0;
-    right: 0;
     top: 116px;
     width: 336px;
     height: 318px;
-    margin: 0 auto;
-    background-image: url(../../assets/image/HKPDLogoMask.webp);
+    background-image: url("#{$image-folder}/HKPDLogoMask.webp");
     background-size: contain;
     background-repeat: no-repeat;
     mix-blend-mode: color-dodge;
