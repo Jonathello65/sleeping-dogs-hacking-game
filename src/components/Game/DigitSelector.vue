@@ -1,8 +1,8 @@
 <template>
 <div class="digit-selector">
-    <button @click="increment()">^</button>
+    <button @click.exact="increment()" @click.shift="incrementFour()">^</button>
     <h3>{{ value }}</h3>
-    <button @click="decrement()">v</button>
+    <button @click.exact="decrement()"  @click.shift="decrementFour()">v</button>
 </div>
 </template>
 
@@ -36,6 +36,22 @@ export default class DigitSelector extends Vue {
         } else {
             this.value--;
         }
+        this.playSound();
+    }
+
+    public incrementFour(): void {
+        if (this.value >= 6) {
+            this.value -= 10;
+        }
+        this.value += 4;
+        this.playSound();
+    }
+
+    public decrementFour(): void {
+        if (this.value <= 3) {
+            this.value += 10;
+        }
+        this.value -= 4;
         this.playSound();
     }
 
