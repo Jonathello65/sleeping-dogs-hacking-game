@@ -77,4 +77,20 @@ export default class HackGame extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "@/styles/Body.scss";
+
+.hack-game {
+    opacity: 0;
+    visibility: hidden;
+    animation: hack-game-fade-in 0.35s ease-in 3.65s forwards;
+}
+@keyframes hack-game-fade-in {
+    from {
+        opacity: 0;
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
 </style>

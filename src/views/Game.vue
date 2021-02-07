@@ -32,3 +32,9 @@ export default class Game extends Vue {
     }
 }
 </script>
+
+<style lang="scss">
+#game {
+    color: #6090d7;
+}
+</style>

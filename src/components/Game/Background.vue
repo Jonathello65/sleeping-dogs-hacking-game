@@ -28,9 +28,10 @@ $badge-inner-initial-scale: 0.125;
     background-image: url("#{$image-folder}/Background.webp");
     background-size: contain;
     background-repeat: no-repeat;
+    border-radius: 16px;
 }
 .badge {
-    top: 116px;
+    top: 156px;
     width: 336px;
     height: 318px;
     background-image: url("#{$image-folder}/HKPDLogoMask.webp");
