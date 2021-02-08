@@ -25,6 +25,7 @@ nav {
 	a {
 		font-size: 1.25rem;
 		color: map-get($theme-colors, "text");
+		user-select: none;
 		@media (max-width: 575px) {
 			&:hover, &.router-link-exact-active {
 				color: map-get($theme-colors, "nav-select") !important;
@@ -40,15 +41,12 @@ nav {
 		margin-left: auto;
 		margin-right: auto;
 		a {
-			&.router-link-exact-active {
-				border-bottom-color: map-get($theme-colors, "nav-select") !important;
-				border-bottom-style: solid;
-				border-bottom-width: 2px;
-			}
+			&.router-link-exact-active,
 			&:hover {
 				border-bottom-color: map-get($theme-colors, "nav-select") !important;
 				border-bottom-style: solid;
 				border-bottom-width: 2px;
+				user-select: none;
 			}
 		}
 	}
@@ -68,5 +66,6 @@ nav {
 }
 .navbar-brand {
 	color: map-get($theme-colors, "text") !important;
+	z-index: 1;
 }
 </style>

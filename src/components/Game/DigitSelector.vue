@@ -1,8 +1,12 @@
 <template>
 <div class="digit-selector">
-    <button @click.exact="increment()" @click.shift="incrementFour()">^</button>
-    <h3>{{ value }}</h3>
-    <button @click.exact="decrement()"  @click.shift="decrementFour()">v</button>
+    <!-- <button @click.exact="increment()" @click.shift="incrementFour()">^</button> -->
+    <div class="digit bg">
+        <div class="digit up" @click.exact="increment()" @click.shift="incrementFour()"></div>
+        <div class="digit value">{{ value }}</div>
+        <div class="digit down" @click.exact="decrement()"  @click.shift="decrementFour()"></div>
+    </div>
+    <!-- <button @click.exact="decrement()"  @click.shift="decrementFour()">v</button> -->
 </div>
 </template>
 
@@ -74,5 +78,57 @@ export default class DigitSelector extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "@/styles/Graphic.scss";
+$image-folder: "../../assets/image";
+$digit-updown-half-length: 32px;
+$digit-updown-height: 15px;
+$digit-updown-offset: -18px;
+$digit-updown-color: rgb(162, 193, 217);
+$digit-updown-color-hover: rgb(226, 236, 243);
+$digit-updown-color-active: rgb(125, 168, 202);
 
+.digit {
+    @include graphic();
+    background-size: cover;
+    background-repeat: no-repeat;
+    &.bg {
+        top: 620px;
+        width: 66px;
+        height: 78px;
+        background-image: url("#{$image-folder}/NumInput.webp");
+    }
+    &.up {
+        top: $digit-updown-offset;
+        border-bottom: $digit-updown-height solid $digit-updown-color;
+        &:hover {
+            border-bottom: $digit-updown-height solid $digit-updown-color-hover;
+        }
+        &:active {
+            border-bottom: $digit-updown-height solid $digit-updown-color-active;
+        }
+    }
+    &.value {
+        color: rgb(16, 17, 19);
+        font-size: 64px;
+        line-height: 75px;
+    }
+    &.down {
+        bottom: $digit-updown-offset;
+        border-top: $digit-updown-height solid $digit-updown-color;
+        &:hover {
+            border-top: $digit-updown-height solid $digit-updown-color-hover;
+        }
+        &:active {
+            border-top: $digit-updown-height solid $digit-updown-color-active;
+        }
+    }
+    &.up,
+    &.down {
+        width: 0px;
+        height: 0px;
+        border-left: $digit-updown-half-length solid transparent;
+        border-right: $digit-updown-half-length solid transparent;
+        cursor: pointer;
+    }
+}
 </style>

@@ -15,6 +15,8 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "@/styles/Body.scss";
+@import "@/styles/Game.scss";
+@import "@/styles/Graphic.scss";
 $image-folder: "../../assets/image";
 $loading-bar-width: 386px;
 $loading-bar-height: 4px;
@@ -22,11 +24,7 @@ $loading-bar-height: 4px;
 .intro-game {
     animation: intro-fade-out 0.35s ease-in 3.65s forwards;
     > div {
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
+        @include graphic();
         > div {
             position: absolute;
         }
@@ -60,7 +58,7 @@ $loading-bar-height: 4px;
 }
 .status-text {
     top: 520px;
-    width: 480px;
+    width: $game-width;
     height: 80px;
     font-size: 150%;
     overflow: hidden;

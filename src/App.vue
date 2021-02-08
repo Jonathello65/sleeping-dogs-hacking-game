@@ -7,7 +7,7 @@
                 <router-view/>
             </div>
         </div>
-        <footer/>
+        <Footer/>
     </div>
 </div>
 </template>
@@ -43,6 +43,7 @@ html,body,#app {
     height: calc(100vh - #{$nav-offset}) !important;
 }
 body {
+    min-width: 1100px;
     background-color: map-get($theme-colors, "body-bg") !important;
 }
 #app {

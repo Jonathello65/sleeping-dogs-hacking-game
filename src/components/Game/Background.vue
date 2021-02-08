@@ -10,21 +10,19 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "@/styles/Body.scss";
+@import "@/styles/Game.scss";
+@import "@/styles/Graphic.scss";
 $image-folder: "../../assets/image";
 $badge-inner-initial-scale: 0.125;
 
 .background {
     > div {
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
+        @include graphic();
     }
 }
 .bg-color {
-    width: 480px;
-    height: 825px;
+    width: $game-width;
+    height: $game-height;
     background-image: url("#{$image-folder}/Background.webp");
     background-size: contain;
     background-repeat: no-repeat;
