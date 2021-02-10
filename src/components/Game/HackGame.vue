@@ -2,28 +2,27 @@
 <div class="hack-game">
     <div class="digit-selector-bg"></div>
     <b-container>
-        <b-row>
+        <!-- <b-row>
             <b-col>
                 <h4>PREVIOUS ATTEMPTS:</h4>
             </b-col>
-        </b-row>
-        <b-row class="digit-module-row" v-for="guess in guesses" :key="guess.id">
-            <b-col>
-                <digit-guess-module :props="guess"/>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
-                <h4>ATTEMPTS REMAINING: {{remainingAttempts}}</h4>
-            </b-col>
-        </b-row>
+        </b-row> -->
+        <div class="for-testing-purposes-only">
+            <b-row class="digit-module-row" v-for="guess in guesses" :key="guess.id">
+                <b-col>
+                    <digit-guess-module :props="guess"/>
+                </b-col>
+            </b-row>
+        </div>
+        <div class="digit-row-text digit-row-tip">ENTER 4 UNIQUE DIGITS</div>
+        <div class="digit-row-text digit-row-attempts">ATTEMPTS REMAINING: {{remainingAttempts}}</div>
         <b-row class="digit-row">
             <b-col v-for="digit in player.digits" :key="digit.id">
                 <digit-selector :props="digit" @changed="player.update(digit, ...arguments)"/>
             </b-col>
         </b-row>
     </b-container>
-    <button @click="guessPassword()">-></button>
+    <div class="guess" @click="guessPassword()"></div>
 </div>
 </template>
 
@@ -82,6 +81,15 @@ export default class HackGame extends Vue {
 @import "@/styles/Graphic.scss";
 $image-folder: "../../assets/image";
 
+@mixin digit-row-text-visible() {
+    opacity: 1;
+    visibility: visible;
+}
+@mixin digit-row-text-hidden() {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .hack-game {
     height: $game-height;
     opacity: 0;
@@ -106,6 +114,41 @@ $image-folder: "../../assets/image";
     width: $game-width;
     padding: 0 100px;
 }
+.digit-row-text {
+    @include graphic();
+    top: 612px;
+    font-size: 1.5rem;
+    color: white;
+}
+.digit-row-tip {
+    @include digit-row-text-visible();
+    animation: digit-row-text-phase-1 9s ease-in-out 4s infinite;
+}
+.digit-row-attempts {
+    @include digit-row-text-hidden();
+    animation: digit-row-text-phase-2 9s ease-in-out 4s infinite;
+}
+.guess {
+    @include graphic();
+    top: 706px;
+    width: 51px;
+    height: 51px;
+    background-image: url("#{$image-folder}/EnterButton.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(180px);
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        filter: brightness(1.5);
+    }
+    &:active {
+        filter: brightness(0.75);
+    }
+}
+.for-testing-purposes-only {
+    @include graphic();
+}
 @keyframes hack-game-fade-in {
     from {
         opacity: 0;
@@ -115,5 +158,20 @@ $image-folder: "../../assets/image";
         opacity: 1;
         visibility: visible;
     }
+}
+@keyframes digit-row-text-phase-1 {
+    0%   { @include digit-row-text-visible(); }
+    44%  { @include digit-row-text-visible(); }
+    47%  { @include digit-row-text-hidden();  }
+    97%  { @include digit-row-text-hidden();  }
+    100% { @include digit-row-text-visible(); }
+}
+@keyframes digit-row-text-phase-2 {
+    0%   { @include digit-row-text-hidden();  }
+    47%  { @include digit-row-text-hidden();  }
+    50%  { @include digit-row-text-visible(); }
+    94%  { @include digit-row-text-visible(); }
+    97%  { @include digit-row-text-hidden();  }
+    100% { @include digit-row-text-hidden();  }
 }
 </style>

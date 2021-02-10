@@ -92,7 +92,7 @@ $digit-updown-color-active: rgb(125, 168, 202);
     background-size: cover;
     background-repeat: no-repeat;
     &.bg {
-        top: 620px;
+        top: 692px;
         width: 66px;
         height: 78px;
         background-image: url("#{$image-folder}/NumInput.webp");
@@ -115,7 +115,8 @@ $digit-updown-color-active: rgb(125, 168, 202);
     &.down {
         bottom: $digit-updown-offset;
         border-top: $digit-updown-height solid $digit-updown-color;
-        &:hover {
+        &:hover,
+        &:focus {
             border-top: $digit-updown-height solid $digit-updown-color-hover;
         }
         &:active {
