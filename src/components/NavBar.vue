@@ -1,5 +1,5 @@
 <template>
-<b-navbar toggleable="sm" type="dark" variant="info" fixed="top">
+<b-navbar toggleable="lg" type="dark" variant="info" fixed="top">
 	<b-navbar-brand>Sleeping Dogs Hacking Game</b-navbar-brand>
 
 	<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -35,7 +35,7 @@ nav {
 		padding-bottom: 0;
 	}
 }
-@media (min-width: 576px) {
+@media (min-width: 992px) {
 	#nav {
 		margin-left: auto;
 		margin-right: auto;
@@ -60,7 +60,7 @@ nav {
 		top: 0.5rem;
 		bottom: 0.5rem;
 	}
-	.navbar-expand-sm .navbar-nav .nav-link {
+	.navbar-expand-lg .navbar-nav .nav-link {
 		padding: 0;
 		margin-left: 0.5rem;
 		margin-right: 0.5rem;
