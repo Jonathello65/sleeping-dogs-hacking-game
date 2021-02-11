@@ -1,12 +1,18 @@
 <template>
 <div class="digit-selector">
-    <!-- <button @click.exact="increment()" @click.shift="incrementFour()">^</button> -->
-    <div class="digit bg">
-        <div class="digit up" @click.exact="increment()" @click.shift="incrementFour()"></div>
+    <div
+        class="digit bg"
+        @keydown.up.exact.prevent="increment()"
+        @keydown.down.exact.prevent="decrement()"
+        @keydown.up.shift.prevent="incrementFour()"
+        @keydown.down.shift.prevent="decrementFour()"
+        @mousedown.prevent=""
+        tabindex="0"
+    >
+        <div class="digit up" @mousedown.prevent="" @click.exact="increment()" @click.shift="incrementFour()"></div>
         <div class="digit value">{{ value }}</div>
-        <div class="digit down" @click.exact="decrement()"  @click.shift="decrementFour()"></div>
+        <div class="digit down" @mousedown.prevent="" @click.exact="decrement()"  @click.shift="decrementFour()"></div>
     </div>
-    <!-- <button @click.exact="decrement()"  @click.shift="decrementFour()">v</button> -->
 </div>
 </template>
 
@@ -96,11 +102,18 @@ $digit-updown-color-active: rgb(125, 168, 202);
         width: 66px;
         height: 78px;
         background-image: url("#{$image-folder}/NumInput.webp");
+        &:focus .digit.up {
+            border-bottom: $digit-updown-height solid $digit-updown-color-hover;
+        }
+        &:focus .digit.down {
+            border-top: $digit-updown-height solid $digit-updown-color-hover;
+        }
     }
     &.up {
         top: $digit-updown-offset;
         border-bottom: $digit-updown-height solid $digit-updown-color;
-        &:hover {
+        &:hover,
+        &:focus {
             border-bottom: $digit-updown-height solid $digit-updown-color-hover;
         }
         &:active {

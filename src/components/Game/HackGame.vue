@@ -22,7 +22,7 @@
             </b-col>
         </b-row>
     </b-container>
-    <div class="guess" @click="guessPassword()"></div>
+    <div class="guess" @mousedown.prevent="" @click="guessPassword()" @keydown.enter.prevent="guessPassword()" tabindex="0"></div>
 </div>
 </template>
 
