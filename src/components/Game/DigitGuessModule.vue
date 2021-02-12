@@ -1,9 +1,9 @@
 <template>
 <div class="digit-guess-module">
     <div class="module">
-        <b-container>
+        <b-container class="module-container">
             <b-row>
-                <b-col v-for="digit in digits" :key="digit.id">
+                <b-col v-for="digit in digits" :key="digit.id" class="p-0">
                     <digit-guess-state :props="digit"/>
                 </b-col>
             </b-row>
@@ -58,5 +58,13 @@ $image-folder: "../../assets/image";
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: rgba(89, 136, 203, 0.08) inset 0px 0px 16px 8px;
+}
+.module-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 50px;
+    margin: auto 0;
+    padding: 0 140px;
 }
 </style>

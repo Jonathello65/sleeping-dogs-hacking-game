@@ -1,6 +1,6 @@
 <template>
 <div class="digit-guess-state">
-    <h3 :class="{ 'incorrect-digit': !isCorrectDigit, 'incorrect-position': !isCorrectPosition}">{{ value }}</h3>
+    <div :class="{'digit': true, 'incorrect-digit': !isCorrectDigit, 'incorrect-position': !isCorrectPosition}">{{ value }}</div>
 </div>
 </template>
 
@@ -31,23 +31,23 @@ export default class DigitGuessState extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
+.digit {
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.2;
     color: green;
 }
-
 .incorrect-position {
     color: black;
     background-color: orange;
     border-radius: 50%;
-    width: 33.6px;
-    margin: 0 auto;
 }
-
 .incorrect-digit {
     color: black;
     background-color: red;
     border-radius: 50%;
-    width: 33.6px;
-    margin: 0 auto;
 }
 </style>
