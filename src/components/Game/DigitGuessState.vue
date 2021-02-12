@@ -12,15 +12,11 @@ import {GuessDigit} from "@/classes/Guess.ts";
 @Component
 export default class DigitGuessState extends Vue {
     @Prop() public props!: GuessDigit;
-    private value: number = 0;
-    private isCorrectDigit = false;
-    private isCorrectPosition = false;
+    protected value: number = 0;
+    protected isCorrectDigit = false;
+    protected isCorrectPosition = false;
 
     public created() {
-        this.sync();
-    }
-
-    private sync(): void {
         this.value = this.props.value;
         this.isCorrectDigit = this.props.isCorrectDigit;
         this.isCorrectPosition = this.props.isCorrectPosition;

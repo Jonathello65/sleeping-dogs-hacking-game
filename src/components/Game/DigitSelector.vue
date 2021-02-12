@@ -25,7 +25,7 @@ import GameManager from "@/classes/GameManager.ts";
 @Component
 export default class DigitSelector extends Vue {
     @Prop() public props!: PlayerDigit;
-    private value: number = 0;
+    protected value: number = 0;
 
     public created() {
         this.sync();
@@ -65,17 +65,17 @@ export default class DigitSelector extends Vue {
         this.playSound();
     }
 
-    private playSound(): void {
+    protected playSound(): void {
         GameManager.playSound("MROLLOV2");
     }
 
     @Watch("props.value")
-    private sync(): void {
+    protected sync(): void {
         this.value = this.props.value;
     }
 
     @Watch("value")
-    private changed(): void {
+    protected changed(): void {
         this.$emit("changed", this.value);
     }
 }

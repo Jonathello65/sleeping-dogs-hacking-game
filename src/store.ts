@@ -31,6 +31,10 @@ const mutations: MutationTree<State> = {
     },
     setCorrectCode(state, payload) {
         state.correctCode = payload;
+    },
+    resetGame(state) {
+        state.gamestate = GameState.Playing;
+        state.correctCode = "";
     }
 };
 

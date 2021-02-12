@@ -5,8 +5,9 @@ export interface GuessDigit {
     isCorrectPosition: boolean;
 }
 
-export class Guess {
-    public static autoIncrementId: number = 0;
+export default class Guess {
+    public static resetAutoIncrementId(): void { Guess.autoIncrementId = 0; }
+    protected static autoIncrementId: number = 0;
     public digits: GuessDigit[] = [];
     public correctDigits: number[] = [];
     public id!: number;

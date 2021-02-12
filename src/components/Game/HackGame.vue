@@ -10,7 +10,7 @@
         <div class="for-testing-purposes-only">
             <b-row class="digit-module-row" v-for="guess in guesses" :key="guess.id">
                 <b-col>
-                    <digit-guess-module :props="guess"/>
+                    <digit-guess-module :props="guess" :remainingAttempts="remainingAttempts"/>
                 </b-col>
             </b-row>
         </div>
@@ -30,7 +30,7 @@
 <script lang="ts">
 import {Component, Vue} from "vue-property-decorator";
 import {Player, PlayerDigit} from "@/classes/Player.ts";
-import {Guess} from "@/classes/Guess.ts";
+import Guess from "@/classes/Guess.ts";
 import Config from "@/classes/Config.ts";
 import GameManager from "@/classes/GameManager.ts";
 import DigitSelector from "@/components/Game/DigitSelector.vue";
@@ -45,7 +45,7 @@ import GameState from "@/enums/GameState";
 export default class HackGame extends Vue {
     public player = new Player();
     public guesses: Guess[] = [];
-    public remainingAttempts: number = 6;
+    public remainingAttempts: number = Config.TOTAL_ATTEMPTS;
 
     public created(): void {
         for (let i = 0; i < Config.DIGIT_COUNT; i++) {
