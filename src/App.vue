@@ -7,7 +7,7 @@
                 <router-view/>
             </div>
         </div>
-        <Footer/>
+        <Footer v-if="$route.name !== 'game'"/>
     </div>
 </div>
 </template>

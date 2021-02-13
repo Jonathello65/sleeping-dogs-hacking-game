@@ -34,16 +34,34 @@ export default class DigitGuessState extends Vue {
     font-size: 42px;
     font-weight: 500;
     line-height: 1.2;
-    color: green;
+    color: rgb(53, 245, 66);
+    text-shadow: rgba(53, 245, 66, 0.5) 0 0 6px;
+    opacity: 0;
+    animation: fade-in 0.5s ease-in-out 0s forwards;
 }
 .incorrect-position {
     color: black;
-    background-color: orange;
+    background-color: rgb(182, 131, 34);
     border-radius: 50%;
+    text-shadow: unset;
+    animation: fade-in 0.5s ease-in-out 0.25s forwards;
 }
 .incorrect-digit {
+    width: 46px;
+    padding: 0 2px;
     color: black;
-    background-color: red;
-    border-radius: 50%;
+    background-color: rgb(128, 0, 0);
+    border-radius: 5px;
+    box-shadow: black inset 0px 0px 6px;
+    text-shadow: unset;
+    animation: fade-in 0.5s ease-in-out 0.5s forwards;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 </style>

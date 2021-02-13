@@ -2,18 +2,19 @@
 <div class="hack-game">
     <div class="digit-selector-bg"></div>
     <b-container>
-        <!-- <b-row>
-            <b-col>
-                <h4>PREVIOUS ATTEMPTS:</h4>
-            </b-col>
-        </b-row> -->
-        <div class="for-testing-purposes-only">
-            <b-row class="digit-module-row" v-for="guess in guesses" :key="guess.id">
-                <b-col>
-                    <digit-guess-module :props="guess" :remainingAttempts="remainingAttempts"/>
-                </b-col>
-            </b-row>
+        <div class="previous" :class="{
+            reveal: guessStep === 0,
+            step1: guessStep === 1,
+            step2: guessStep === 2,
+            step3: guessStep === 3
+        }">
+            PREVIOUS ATTEMPTS:
         </div>
+        <b-row v-for="guess in guesses" :key="guess.id">
+            <b-col>
+                <digit-guess-module :props="guess" :remainingAttempts="remainingAttempts"/>
+            </b-col>
+        </b-row>
         <div class="digit-row-text digit-row-tip">ENTER 4 UNIQUE DIGITS</div>
         <div class="digit-row-text digit-row-attempts">ATTEMPTS REMAINING: {{remainingAttempts}}</div>
         <b-row class="digit-row">
@@ -28,7 +29,7 @@
 
 
 <script lang="ts">
-import {Component, Vue} from "vue-property-decorator";
+import {Component, Watch, Vue} from "vue-property-decorator";
 import {Player, PlayerDigit} from "@/classes/Player.ts";
 import Guess from "@/classes/Guess.ts";
 import Config from "@/classes/Config.ts";
@@ -46,6 +47,7 @@ export default class HackGame extends Vue {
     public player = new Player();
     public guesses: Guess[] = [];
     public remainingAttempts: number = Config.TOTAL_ATTEMPTS;
+    public guessStep: number = -1;
 
     public created(): void {
         for (let i = 0; i < Config.DIGIT_COUNT; i++) {
@@ -70,6 +72,11 @@ export default class HackGame extends Vue {
             }
         }
     }
+
+    @Watch("remainingAttempts")
+    public updateGuessStep(): void {
+        this.guessStep = Config.TOTAL_ATTEMPTS - this.remainingAttempts - 1;
+    }
 }
 </script>
 
@@ -80,6 +87,7 @@ export default class HackGame extends Vue {
 @import "@/styles/Game.scss";
 @import "@/styles/Graphic.scss";
 $image-folder: "../../assets/image";
+$previous-offset-x: -96px;
 
 @mixin digit-row-text-visible() {
     opacity: 1;
@@ -146,8 +154,26 @@ $image-folder: "../../assets/image";
         filter: brightness(0.75);
     }
 }
-.for-testing-purposes-only {
+.previous {
     @include graphic();
+    bottom: 230px;
+    transform: translate($previous-offset-x, 0px);
+    font-size: 1.5rem;
+    text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px, rgba(0, 0, 0, 0.5) -1px -1px 3px;
+    opacity: 0;
+    visibility: hidden;
+    &.reveal {
+        animation: previous-slide-in-reveal 0.5s ease-out 0s forwards;
+    }
+    &.step1 {
+        animation: previous-slide-in-step1 0.5s ease-out 0s forwards;
+    }
+    &.step2 {
+        animation: previous-slide-in-step2 0.5s ease-out 0s forwards;
+    }
+    &.step3 {
+        animation: previous-slide-in-step3 0.5s ease-out 0s forwards;
+    }
 }
 @keyframes hack-game-fade-in {
     from {
@@ -173,5 +199,53 @@ $image-folder: "../../assets/image";
     94%  { @include digit-row-text-visible(); }
     97%  { @include digit-row-text-hidden();  }
     100% { @include digit-row-text-hidden();  }
+}
+@keyframes previous-slide-in-reveal {
+    from {
+        opacity: 0;
+        transform: translate($previous-offset-x, 0px);
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        transform: translate($previous-offset-x, -132px);
+        visibility: visible;
+    }
+}
+@keyframes previous-slide-in-step1 {
+    from {
+        opacity: 1;
+        transform: translate($previous-offset-x, -132px);
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        transform: translate($previous-offset-x, -264px);
+        visibility: visible;
+    }
+}
+@keyframes previous-slide-in-step2 {
+    from {
+        opacity: 1;
+        transform: translate($previous-offset-x, -264px);
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        transform: translate($previous-offset-x, -396px);
+        visibility: visible;
+    }
+}
+@keyframes previous-slide-in-step3 {
+    from {
+        opacity: 1;
+        transform: translate($previous-offset-x, -396px);
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        transform: translate($previous-offset-x, -528px);
+        visibility: hidden;
+    }
 }
 </style>

@@ -45,7 +45,6 @@ export default class DigitGuessModule extends Vue {
     @Watch("remainingAttempts")
     protected updateStep(): void {
         this.step = Config.TOTAL_ATTEMPTS - this.remainingAttempts - this.id - 1;
-        console.log("Update!", this.remainingAttempts, this.step);
     }
 }
 </script>
@@ -72,7 +71,7 @@ $image-folder: "../../assets/image";
     box-shadow: rgba(89, 136, 203, 0.08) inset 0px 0px 16px 8px;
     opacity: 0;
     transform: translateY(132px);
-    animation: module-slide-in-first 0.5s ease-out 0s forwards;
+    animation: module-slide-in-reveal 0.5s ease-out 0s forwards;
     &.step1 {
         animation: module-slide-in-step1 0.5s ease-out 0s forwards;
     }
@@ -91,7 +90,7 @@ $image-folder: "../../assets/image";
     margin: auto 0;
     padding: 0 140px;
 }
-@keyframes module-slide-in-first {
+@keyframes module-slide-in-reveal {
     from {
         opacity: 0;
         transform: translateY(132px);
