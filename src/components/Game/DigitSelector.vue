@@ -2,16 +2,29 @@
 <div class="digit-selector">
     <div
         class="digit bg"
+        :class="{guessed}"
         @keydown.up.exact.prevent="increment()"
         @keydown.down.exact.prevent="decrement()"
         @keydown.up.shift.prevent="incrementFour()"
         @keydown.down.shift.prevent="decrementFour()"
         @mousedown.prevent=""
-        tabindex="0"
+        :tabindex="guessed ? '' : 0"
     >
-        <div class="digit up" @mousedown.prevent="" @click.exact="increment()" @click.shift="incrementFour()"></div>
+        <div
+            class="digit up"
+            v-if="!guessed"
+            @mousedown.prevent=""
+            @click.exact="increment()"
+            @click.shift="incrementFour()"
+        ></div>
         <div class="digit value">{{ value }}</div>
-        <div class="digit down" @mousedown.prevent="" @click.exact="decrement()"  @click.shift="decrementFour()"></div>
+        <div
+            class="digit down"
+            v-if="!guessed"
+            @mousedown.prevent=""
+            @click.exact="decrement()"
+            @click.shift="decrementFour()"
+        ></div>
     </div>
 </div>
 </template>
@@ -26,6 +39,7 @@ import GameManager from "@/classes/GameManager.ts";
 export default class DigitSelector extends Vue {
     @Prop() public props!: PlayerDigit;
     protected value: number = 0;
+    protected guessed: boolean = false;
 
     public created() {
         this.sync();
@@ -70,8 +84,10 @@ export default class DigitSelector extends Vue {
     }
 
     @Watch("props.value")
+    @Watch("props.guessed")
     protected sync(): void {
         this.value = this.props.value;
+        this.guessed = this.props.guessed;
     }
 
     @Watch("value")
@@ -102,6 +118,13 @@ $digit-updown-color-active: rgb(125, 168, 202);
         width: 66px;
         height: 78px;
         background-image: url("#{$image-folder}/NumInput.webp");
+        &.guessed {
+            background-image: url("#{$image-folder}/NumInputCorrect.webp");
+            > .value {
+                color: rgb(53, 245, 66);
+                text-shadow: rgba(53, 245, 66, 0.5) 0 0 6px;
+            }
+        }
         &:focus .digit.up {
             border-bottom: $digit-updown-height solid $digit-updown-color-hover;
         }

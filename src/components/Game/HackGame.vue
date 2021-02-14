@@ -59,7 +59,7 @@ export default class HackGame extends Vue {
 
     public created(): void {
         for (let i = 0; i < Config.DIGIT_COUNT; i++) {
-            this.player.digits.push({id: i, value: 0} as PlayerDigit);
+            this.player.digits.push({id: i, value: 0, guessed: false} as PlayerDigit);
         }
     }
 
@@ -67,6 +67,24 @@ export default class HackGame extends Vue {
         console.log(`Player guess: ${this.player.digitsToString()}`);
         const guess = new Guess(this.player.digitsAsArray(), GameManager.digitArray);
         this.guesses.push(guess);
+
+        for (let i = 0; i < Config.DIGIT_COUNT; i++) {
+            console.log(`Loop ${i}`);
+            const playerDigit = this.player.digits[i];
+            console.log(playerDigit);
+
+            if (playerDigit.guessed) {
+                continue;
+            }
+
+            const guessDigit = guess.digits[i];
+            console.log(guessDigit);
+
+            if (guessDigit.isCorrectPosition) {
+                console.log("Digit is correct!");
+                playerDigit.guessed = true;
+            }
+        }
 
         if (guess.guessIsCorrect) {
             this.$store.commit("setGameState", GameState.Success);

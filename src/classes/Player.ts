@@ -1,6 +1,7 @@
 export interface PlayerDigit {
     id: number;
     value: number;
+    guessed: boolean;
 }
 
 export class Player {
