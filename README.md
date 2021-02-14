@@ -1,6 +1,8 @@
 # sleeping-dogs-hacking-game
 
-Training for hacking in the Sleeping Dogs game. Utilizes Vue to recreate the mini game as close as possible, with some QOL changes for PC/mobile. See the dev process on our [Trello board.](https://trello.com/b/ZLsxVEvF/sleepingdogs-hacking-minigame)
+Training for hacking in the Sleeping Dogs™ game. Utilizes Vue to recreate the mini game as close as possible, with some minor QOL changes. See the dev process on our [Trello board.](https://trello.com/b/ZLsxVEvF/sleepingdogs-hacking-minigame)
+
+Note that this app works best on desktop with Chromium browsers. For desktop Firefox users, please disable hardware acceleration to avoid graphical anomalies (as of Feb 2021).
 
 ## System Requirements
 
@@ -70,37 +72,3 @@ npm run build
 ```bash
 npm run lint
 ```
-
-### Run all tests (end-to-end and unit)
-
-```bash
-npm run test
-```
-
-### Run end-to-end tests manually
-
-```bash
-npm run test:e2e
-```
-
-### Run end-to-end tests automatically
-
-```bash
-npm run test:e2e-auto
-```
-
-### Run end-to-end tests without the GUI
-
-```bash
-npm run test:e2e-nogui
-```
-
-### Run unit tests
-
-```bash
-npm run test:unit
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
