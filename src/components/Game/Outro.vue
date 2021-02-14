@@ -4,8 +4,8 @@
         <span>{{ $store.getters.getCorrectCode }}</span>
     </div>
     <div class="ending-message">
-        <span v-if="$store.getters.isSuccess">ACCESS<br>GRANTED</span>
-        <span v-if="$store.getters.isFailure">ACCESS<br>DENIED</span>
+        <span class="success-message" v-if="$store.getters.isSuccess">ACCESS<br>GRANTED</span>
+        <span class="failure-message" v-if="$store.getters.isFailure">ACCESS<br>DENIED</span>
     </div>
 </div>
 </template>
@@ -44,6 +44,8 @@ export default class Outro extends Vue {
         font-weight: 500;
         line-height: 1.2;
         transform: translateY(-70px);
+        color: white;
+        animation: fade-in-code 0.5s ease-in-out 0.1s forwards;
     }
     & > .ending-message {
         top: 0;
@@ -57,6 +59,38 @@ export default class Outro extends Vue {
         font-weight: 500;
         line-height: 1;
         transform: translateY(22px);
+        & > .success-message {
+            color: white;
+            animation: fade-in-success 0.5s ease-in-out 0.1s forwards;
+        }
+        & > .failure-message {
+            color: white;
+            animation: fade-in-failure 0.5s ease-in-out 0.1s forwards;
+        }
+    }
+}
+@keyframes fade-in-code {
+    from {
+        color: white;
+    }
+    to {
+        color: #6090d7;
+    }
+}
+@keyframes fade-in-success {
+    from {
+        color: white;
+    }
+    to {
+        color: #1f68ad;
+    }
+}
+@keyframes fade-in-failure {
+    from {
+        color: white;
+    }
+    to {
+        color: #ad1f1f;
     }
 }
 </style>
