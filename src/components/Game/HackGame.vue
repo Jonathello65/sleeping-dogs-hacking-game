@@ -172,6 +172,7 @@ $previous-offset-x: -96px;
     background-repeat: no-repeat;
     transform: translateX(180px);
     cursor: pointer;
+    touch-action: manipulation;
     &:hover,
     &:focus {
         filter: brightness(1.5);

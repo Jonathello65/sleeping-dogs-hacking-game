@@ -146,7 +146,7 @@ $digit-updown-color-active: rgb(125, 168, 202);
     &.value {
         color: rgb(16, 17, 19);
         font-size: 64px;
-        line-height: 75px;
+        line-height: 1.18;
     }
     &.down {
         bottom: $digit-updown-offset;
@@ -166,6 +166,7 @@ $digit-updown-color-active: rgb(125, 168, 202);
         border-left: $digit-updown-half-length solid transparent;
         border-right: $digit-updown-half-length solid transparent;
         cursor: pointer;
+        touch-action: manipulation;
     }
 }
 </style>
