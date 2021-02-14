@@ -15,6 +15,14 @@
                 <digit-guess-module :props="guess" :remainingAttempts="remainingAttempts"/>
             </b-col>
         </b-row>
+        <div class="rules-block" :class="{
+            reveal: guessStep >= 0
+        }">
+            <div class="invalid-placement shape"></div>
+            <div class="invalid-placement text">INVALID PLACEMENT</div>
+            <div class="invalid-digit shape"></div>
+            <div class="invalid-digit text">INVALID DIGIT</div>
+        </div>
         <div class="digit-row-text digit-row-tip">ENTER 4 UNIQUE DIGITS</div>
         <div class="digit-row-text digit-row-attempts">ATTEMPTS REMAINING: {{remainingAttempts}}</div>
         <b-row class="digit-row">
@@ -175,6 +183,50 @@ $previous-offset-x: -96px;
         animation: previous-slide-in-step3 0.5s ease-out 0s forwards;
     }
 }
+.rules-block {
+    @include graphic();
+    top: 0;
+    width: $game-width;
+    height: 70px;
+    background-image: url("#{$image-folder}/RulesBlockBG.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: rgba(89, 136, 203, 0.08) inset 0px 0px 16px 8px;
+    opacity: 0;
+    visibility: hidden;
+    &.reveal {
+        animation: fade-in 0.5s ease-in-out 0s forwards;
+    }
+    & > div {
+        @include graphic();
+        &.shape {
+            width: 27px;
+            height: 27px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border-radius: 3px;
+            transform: translateX(-215px);
+            &.invalid-placement {
+                background-image: url("#{$image-folder}/RulesBlockYellowCircle.webp");
+                top: 4px;
+            }
+            &.invalid-digit {
+                background-image: url("#{$image-folder}/RulesBlockRedSquare.webp");
+                top: 35px;
+            }
+        }
+        &.text {
+            font-size: 1.5rem;
+            text-align: left;
+            transform: translateX(55px);
+            &.invalid-digit {
+                top: 30px;
+            }
+        }
+    }
+}
 @keyframes hack-game-fade-in {
     from {
         opacity: 0;
@@ -246,6 +298,16 @@ $previous-offset-x: -96px;
         opacity: 0;
         transform: translate($previous-offset-x, -528px);
         visibility: hidden;
+    }
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
     }
 }
 </style>
