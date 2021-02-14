@@ -6,7 +6,7 @@
             reveal: guessStep === 0,
             step1: guessStep === 1,
             step2: guessStep === 2,
-            step3: guessStep === 3
+            step3: guessStep >= 3
         }">
             PREVIOUS ATTEMPTS:
         </div>

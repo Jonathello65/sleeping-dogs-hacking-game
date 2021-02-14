@@ -3,7 +3,7 @@
     <div class="module" :style="{zIndex}" :class="{
         step1: step === 1,
         step2: step === 2,
-        step3: step === 3
+        step3: step >= 3
     }">
         <b-container class="module-container">
             <b-row>
