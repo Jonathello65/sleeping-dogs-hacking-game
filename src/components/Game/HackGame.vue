@@ -64,24 +64,18 @@ export default class HackGame extends Vue {
     }
 
     public guessPassword(): void {
-        console.log(`Player guess: ${this.player.digitsToString()}`);
         const guess = new Guess(this.player.digitsAsArray(), GameManager.digitArray);
         this.guesses.push(guess);
 
+        // Mark digit selector as 'guessed' if digit was correct
         for (let i = 0; i < Config.DIGIT_COUNT; i++) {
-            console.log(`Loop ${i}`);
             const playerDigit = this.player.digits[i];
-            console.log(playerDigit);
-
             if (playerDigit.guessed) {
                 continue;
             }
 
             const guessDigit = guess.digits[i];
-            console.log(guessDigit);
-
             if (guessDigit.isCorrectPosition) {
-                console.log("Digit is correct!");
                 playerDigit.guessed = true;
             }
         }
