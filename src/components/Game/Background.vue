@@ -1,10 +1,21 @@
 <template>
 <div class="background">
     <div class="bg-color"></div>
-    <div class="badge inner"></div>
+    <div class="badge inner" v-if="isPlaying"></div>
     <div class="badge outer"></div>
 </div>
 </template>
+
+<script lang="ts">
+import {Component, Vue} from "vue-property-decorator";
+
+@Component
+export default class Background extends Vue {
+    protected get isPlaying(): boolean {
+        return this.$store.getters.isPlaying;
+    }
+}
+</script>
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
